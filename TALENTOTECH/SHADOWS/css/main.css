@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-    --clr-main: #4b33a8;
-    --clr-main-light: #785ce9;
-    --clr-white: #ececec;
-    --clr-gray: #e2e2e2;
-    --clr-red: #961818;
+    --clr-main: #000000;
+    --clr-main-light: #ffffff;
+    --clr-yellow: #ffe600;
+    --clr-gray: #888888;
+    --clr-red: #ff0202;
+    --clr-white: #ffffff;
 }
 
 * {
@@ -18,6 +19,8 @@
 h1, h2, h3, h4, h5, h6, p, a, input, textarea, ul {
     margin: 0;
     padding: 0;
+    text-align: center;
+    justify-content: center;
 }
 
 ul {
@@ -28,16 +31,129 @@ a {
     text-decoration: none;
 }
 
+
+
+
+nav {
+    background-color: #000000; /* Fondo negro */
+    color: rgb(0, 0, 0);
+    padding: 15px 50px;
+}
+
+.navTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 40px;  /* Ajusta el tamaño del logo */
+    height: auto; /* Mantiene la proporción original */
+    margin-right: 15px;
+    transition: transform 0.3s ease; /* Añadido para animación al pasar el mouse */
+}
+
+.logo-text {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.navMenu {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.menuItem {
+    color: white;
+    font-size: 1.8em;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: color 0.3s ease; /* Transición suave al cambiar el color */
+}
+
+/* Cambia el color a amarillo al pasar el mouse */
+.menuItem:hover {
+    color: #fbff00; /* Color amarillo */
+}
+
+.menuItem a {
+    text-decoration: none;
+    color: inherit; /* Mantiene el color blanco por defecto */
+}
+
+.menuItem.active {
+    color: #FFD400; /* Color dorado cuando es activo */
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.iniciar-sesion {
+    background-color: #FFD400;
+    border: none;
+    padding: 10px 20px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.5s ease, color 0.3s ease;
+}
+
+.iniciar-sesion:hover {
+    background-color: #e0b100;
+    color: #ffffff;
+}
+
+/* Animación en el logo al pasar el mouse */
+.logo img:hover {
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño del logo al pasar el mouse */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .navTop {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navMenu {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .logo-text {
+        font-size: 1.5em;
+    }
+}
+
 .wrapper {
     display: grid;
     grid-template-columns: 1fr 4fr;
     background-color: var(--clr-main);
 }
 
+
+
 aside {
     padding: 2rem;
     padding-right: 0;
-    color: var(--clr-white);
+    color: var(--clr-main-light);
     position: sticky;
     top: 0;
     height: 100vh;
@@ -55,30 +171,37 @@ aside {
     display: flex;
     flex-direction: column;
     gap: .5rem;
+    justify-content: center;  /* Centra los elementos en el eje vertical */
+    height: 100%;  /* Ocupa todo el alto disponible del contenedor */
 }
 
 .boton-menu {
-    background-color: transparent;
+    background-color: #000000;  /* Fondo negro para los botones inactivos */
+    color: var(--clr-white);  /* Letras blancas cuando están inactivos */
     border: 0;
-    color: var(--clr-white);
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+    display: flex;  /* Flexbox para alinear los iconos y texto */
+    align-items: center;  /* Centra verticalmente el contenido dentro del botón */
+    gap: 1rem;  /* Espacio entre el icono y el texto */
     font-weight: 600;
-    padding: 1rem;
-    font-size: .85rem;
-    width: 100%;
+    padding: 10px 20px;  /* Espaciado dentro del botón */
+    font-size: 20px;
+    width: 100%;  /* El botón ocupa todo el ancho disponible */
+    /* Puedes ajustar el padding-top aquí, si quieres más espacio en la parte superior del botón */
+    padding-top: 20px;
 }
 
+
+/* Estilo cuando el botón está activo */
 .boton-menu.active {
-    background-color: var(--clr-white);
-    color: var(--clr-main);
+    background-color: var(--clr-yellow);  /* Fondo blanco cuando está activo */
+    color: #000000;  /* Letras negras cuando está activo */
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
     position: relative;
 }
 
+/* Estilo de los indicadores de los botones activos (antes y después) */
 .boton-menu.active::before {
     content: '';
     position: absolute;
@@ -88,7 +211,7 @@ aside {
     right: 0;
     background-color: transparent;
     border-bottom-right-radius: .5rem;
-    box-shadow: 0 1rem 0 var(--clr-white);
+    box-shadow: 0 1rem 0 var(--clr-yellow);
 }
 
 .boton-menu.active::after {
@@ -100,16 +223,35 @@ aside {
     right: 0;
     background-color: transparent;
     border-top-right-radius: .5rem;
-    box-shadow: 0 -1rem 0 var(--clr-white);
+    box-shadow: 0 -1rem 0 var(--clr-yellow);
+    
 }
 
+/* Estilo de los iconos dentro de los botones */
 .boton-menu > i.bi-hand-index-thumb-fill,
 .boton-menu > i.bi-hand-index-thumb {
     transform: rotateZ(90deg);
 }
 
 .boton-carrito {
+    background-color: var(--clr-white);  /* Fondo blanco */
+    color: var(--clr-main);  /* Texto negro */
+    padding: 0.8rem 1.5rem;
     margin-top: 2rem;
+    border-radius: 2rem;
+    font-weight: 10px;
+    border: 2px solid var(--clr-main);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* Cambio de color al pasar el mouse */
+.boton-carrito:hover {
+    background-color: #ff3907;  /* Fondo negro */
+    color: var(--clr-white);  /* Texto blanco */
 }
 
 .numerito {
@@ -130,7 +272,7 @@ aside {
 }
 
 main {
-    background-color: var(--clr-white);
+    background-color: var(--clr-yellow);
     margin: 1rem;
     margin-left: 0;
     border-radius: 2rem;
@@ -182,7 +324,7 @@ main {
 }
 
 .producto-agregar:hover {
-    background-color: var(--clr-main);
+    background-color: #d11919;
     color: var(--clr-white);
 }
 
@@ -210,7 +352,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--clr-gray);
+    background-color: var(--clr-main-light);
     color: var(--clr-main);
     padding: .5rem;
     padding-right: 1.5rem;
@@ -240,7 +382,7 @@ main {
 
 .carrito-acciones-vaciar {
     border: 0;
-    background-color: var(--clr-gray);
+    background-color: var(--clr-main-light);
     padding: 1rem;
     border-radius: 1rem;
     color: var(--clr-main);
@@ -254,7 +396,7 @@ main {
 
 .carrito-acciones-total {
     display: flex;
-    background-color: var(--clr-gray);
+    background-color: var(--clr-main-light);
     padding: 1rem;
     color: var(--clr-main);
     text-transform: uppercase;
